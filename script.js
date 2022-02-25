@@ -55,17 +55,28 @@ function playRound(playerSelection, computerSelection){
 }
 
 function game(){
-    let userInput = window.prompt("Let's Play RPS.")
-    
+    // let userInput = window.prompt("Let's Play RPS.")
+    let cpuInput = computerPlay();
+    rock.addEventListener('click', playRound('rock', cpuInput));
+    paper.addEventListener('click', playRound('paper', cpuInput));
+    scissors.addEventListener('click', playRound('scissors', cpuInput));
         
-        let cpuInput = computerPlay();
         console.log(cpuInput);
-        let result2 = playRound(userInput, cpuInput);
-        result.textContent = 'Computer chose ' + cpuInput + ' And the result is ' + result2;
-    
+        // let result2 = playRound(userInput, cpuInput);
+        const result3 = document.createElement('div');
+        result3.classList.add('result3');
+        result3.textContent = 'Computer chose ' + cpuInput + ' And the result is ' + result2;
+        container.appendChild(result3);
 
 }
 
+const container = document.querySelector('#container');
 const result = document.querySelector('.result');
 const randomize = document.querySelector('.randomize');
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+
+
+
 randomize.addEventListener('click', game);
