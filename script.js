@@ -56,19 +56,42 @@ function playRound(playerSelection, computerSelection){
 
 function game(){
     // let userInput = window.prompt("Let's Play RPS.")
+    
+    let div = document.getElementById(container);
+    div.style.display = div.style.display == "none" ? "block" : "none";
+   let playerScore = 0;
+   let computerScore = 0;
+   let roundCount = 1;
+
+    while (playerScore < 5 || computerScore < 5){
     let cpuInput = computerPlay();
-    rock.addEventListener('click', playRound('rock', cpuInput));
-    paper.addEventListener('click', playRound('paper', cpuInput));
-    scissors.addEventListener('click', playRound('scissors', cpuInput));
-        
+
+   rock.addEventListener('click', () => playRound('rock', cpuInput));
+   paper.addEventListener('click', () => playRound('paper', cpuInput));
+   scissors.addEventListener('click', () => playRound('scissors', cpuInput));
+    let roundWin = 0;
+
         console.log(cpuInput);
         // let result2 = playRound(userInput, cpuInput);
-        const result3 = document.createElement('div');
-        result3.classList.add('result3');
-        result3.textContent = 'Computer chose ' + cpuInput + ' And the result is ' + result2;
-        container.appendChild(result3);
 
+        result3.textContent = `Round ${roundCount} :  Computer chose ${cpuInput }`;
+        if(){
+        playerScore++;
+            result3.textContent = 'Player wins';
+            
+    } else if(){
+        computerScore++;
+        result3.textContent = 'Computer wins';
+    } else {
+        result3.textContent = 'Tie';
+    }
+    roundCount++;
+    }
+    result3.textContent = 'Winner is ' + playerScore++;
 }
+        
+
+
 
 const container = document.querySelector('#container');
 const result = document.querySelector('.result');
@@ -76,6 +99,11 @@ const randomize = document.querySelector('.randomize');
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
+const buttonAll = document.querySelectorAll('#button');
+
+const result3 = document.createElement('div');
+result3.classList.add('result3');
+container.appendChild(result3);
 
 
 
