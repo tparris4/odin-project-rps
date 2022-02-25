@@ -23,7 +23,7 @@ function playRound(playerSelection, computerSelection){
             return 'You Lose';
         }
         else {
-            return 'You Win';
+            return 'You Win!';
         }
         break;
     case 'paper':
@@ -65,21 +65,24 @@ function game(){
 
     while (playerScore < 5 || computerScore < 5){
     let cpuInput = computerPlay();
-
-   rock.addEventListener('click', () => playRound('rock', cpuInput));
-   paper.addEventListener('click', () => playRound('paper', cpuInput));
-   scissors.addEventListener('click', () => playRound('scissors', cpuInput));
     let roundWin = 0;
+   rock.addEventListener('click', () => {
+       roundWin = playRound('rock', cpuInput)});
+   paper.addEventListener('click', () =>{
+        roundWin = playRound('paper', cpuInput)});
+   scissors.addEventListener('click', () => {
+       roundWin = playRound('scissors', cpuInput)});
+    
 
         console.log(cpuInput);
         // let result2 = playRound(userInput, cpuInput);
 
         result3.textContent = `Round ${roundCount} :  Computer chose ${cpuInput }`;
-        if(){
+        if(roundWin === 'You Win!'){
         playerScore++;
             result3.textContent = 'Player wins';
             
-    } else if(){
+    } else if(roundWin === 'You Lose'){
         computerScore++;
         result3.textContent = 'Computer wins';
     } else {
@@ -87,7 +90,13 @@ function game(){
     }
     roundCount++;
     }
-    result3.textContent = 'Winner is ' + playerScore++;
+    if(playerScore == 5){
+    result3.textContent = 'Player wins with ' + playerScore++;
+    }
+    else if(computerScore == 5){
+    result3.textContent = 'Computer wins with ' + computerScore++;
+
+    }
 }
         
 
